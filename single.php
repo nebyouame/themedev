@@ -4,37 +4,45 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package custom_theme
+ * @package DarkTheme
  */
 
 get_header();
 ?>
+<?php get_template_part('template-parts/bread'); ?>
 
-	<main id="primary" class="site-main">
+<section class=" blog-style-one sec-pad blog-page mrsingle">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+		
+			<?php if(is_active_sidebar('sidebar-left')) : ?> 
+			<div class="wp-style content-side col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+			<?php  else : ?>
+			<div class="wp-style content-side col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+			<?php  endif ; ?>  
+				<div class="wp-style blog-single-post content-side">
+                	<!--Blog Detail-->
+                <div class="single_post">
+				<?php while( have_posts() ): the_post();
+								?>
+				<?php get_template_part('template-parts/content' , 'post');?>
+				
+				<!-- Author -->				
+				  <?php endwhile;?>
+                </div>
+            </div>
+           </div>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', get_post_type() );
-
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'custom-theme' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'custom-theme' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-	</main><!-- #main -->
-
+		<?php if(is_active_sidebar('sidebar-left')) { ?>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="sidebar">
+				<?php dynamic_sidebar('sidebar-left'); ?>
+				</div>
+			</div>
+			<?php } ?>
+            <!--Sidebar-->
+            </div>
+        </div>
+    </section>
 <?php
-get_sidebar();
 get_footer();
