@@ -4,57 +4,35 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package custom_theme
+ * @package DarkTheme
  */
-
+ 
 get_header();
 ?>
+<?php get_template_part('template-parts/bread'); ?>
 
-	<main id="primary" class="site-main">
+<div id="primary-404" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'custom-theme' ); ?></h1>
-			</header><!-- .page-header -->
+			<section class="error-404 not-found">
+				<header class="page-header">
+					<h1 class="page-title"><?php esc_html_e( 'This page could not be found!', 'DarkTheme' ); ?></h1>
+				</header>
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'custom-theme' ); ?></p>
+				<div class="page-content">
+					<p><?php esc_html_e( 'I am sorry.The page you are looking for is not available.', 'DarkTheme' );?></p>
+					
+				<div class="error-homepage">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+						<?php esc_html_e('Back To Home','DarkTheme'); ?>
+					</a>
+				</div>
 
-					<?php
-					get_search_form();
+				</div>
+			</section>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'custom-theme' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$custom_theme_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'custom-theme' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$custom_theme_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
+		</main>
+	</div>
+  
 <?php
 get_footer();
