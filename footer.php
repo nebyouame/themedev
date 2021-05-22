@@ -6,29 +6,46 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package custom_theme
+ * @package DarkTheme
  */
 
 ?>
+<footer class="footer">
+	<div class="container">
+	<?php if ( is_active_sidebar( 'footer-sidebar' ) ): ?>
+	<div class="widgets-section">
+		<div class="row">
+		   <?php dynamic_sidebar( 'footer-sidebar' );?>   
+		</div>
+	</div>
+	<?php endif; ?>
+	</div>
+</footer>
+	
+	<div class="footer-bottom">
+		<p>
+		<?php
+			if(get_theme_mod('copyright_txt')){
+				echo esc_html(get_theme_mod('copyright_txt'));
+			}else{
+			  esc_html_e('Copyright &copy;','DarkTheme');
+			  echo date_i18n(__('Y','DarkTheme'));
+			  esc_html_e('| DarkTheme','DarkTheme');
+			}
+		?>
+		
+		</p>        
+    </div>
+<!--Body Wrapper Do not Delete-->
+</div>
+</div>
+<!--Body Wrapper-->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'custom-theme' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'custom-theme' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'custom-theme' ), 'custom-theme', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+<div class="scroll-top">
+    <span class="lnr lnr-chevron-up"></span>
+</div>
 
 <?php wp_footer(); ?>
-
 </body>
 </html>
+
