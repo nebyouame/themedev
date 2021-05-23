@@ -35,3 +35,22 @@ get_header();
 			
 			<?php else :
 get_template_part( 'template-parts/content', 'none' ); endif;?>
+			    </main><!-- #main -->
+                    </div>
+                </div>			
+				<!-- sidebar area -->
+			<?php if(is_active_sidebar('sidebar-left')) { ?>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="sidebar">
+				<?php dynamic_sidebar('sidebar-left'); ?>
+				</div>
+			</div>
+			<?php } ?>
+            <!--Sidebar-->
+				
+            </div>
+        </div>
+    </section>
+<?php
+get_footer();
+	
