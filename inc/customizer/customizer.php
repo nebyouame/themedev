@@ -19,7 +19,7 @@ function DarkTheme_customizer_option( $wp_customize ) {
 	$wp_customize->add_setting(
 		'header_bg_color',
 		array(
-			'default'     => '#111111',
+			'default'     => '#272a6e',
 			'sanitize_callback' => 'sanitize_hex_color'
 		)
 	);
@@ -41,7 +41,7 @@ function DarkTheme_customizer_option( $wp_customize ) {
 $wp_customize->add_setting(
 		'custom_menu_color',
 		array(
-			'default'     => '#000000',
+			'default'     => '#fff',
 			'sanitize_callback' => 'sanitize_hex_color'
 		)
 	);
